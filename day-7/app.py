@@ -8,7 +8,7 @@ st.title("🛒 KNN Purchase Predictor")
 
 @st.cache_resource
 def load_model():
-    if not os.path.exists("knn_model.pkl"):
+    if not os.path.exists("knn_model_file.pkl"):
         st.error("❌ knn_model.pkl not found")
         st.stop()
 
