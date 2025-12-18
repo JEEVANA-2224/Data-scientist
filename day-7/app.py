@@ -16,7 +16,7 @@ def load_model():
         st.error("❌ scaler.pkl not found")
         st.stop()
 
-    with open("knn_model.pkl", "rb") as f:
+    with open("knn_model_file.pkl", "rb") as f:
         model = pickle.load(f)
 
     with open("scaler.pkl", "rb") as f:
