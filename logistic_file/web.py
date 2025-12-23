@@ -34,11 +34,18 @@ sysBP = st.number_input("Systolic BP", min_value=80, max_value=250, value=120)
 diaBP = st.number_input("Diastolic BP", min_value=50, max_value=150, value=80)
 BMI = st.number_input("BMI", min_value=10.0, max_value=60.0, value=25.0)
 glucose = st.number_input("Glucose", min_value=40, max_value=300, value=90)
+BPMeds = st.selectbox("On Blood Pressure Meds?", [0, 1])
+prevalentStroke = st.selectbox("History of Stroke?", [0, 1])
+prevalentHyp = st.selectbox("History of Hypertension?", [0, 1])
+diabetes = st.selectbox("Diabetes?", [0, 1])
+heartRate = st.number_input("Heart Rate", min_value=40, max_value=200, value=70)
+education = st.selectbox("Education Level (0-4)", [0, 1, 2, 3, 4])
 
 # ---------------- Prediction ----------------
 if st.button("🔍 Predict"):
-    input_data = np.array([[age, sex, cigsPerDay, totChol, sysBP, diaBP, BMI, glucose]])
-
+    input_data = np.array([[age, sex, cigsPerDay, totChol, sysBP, diaBP, BMI, glucose,
+                            BPMeds, prevalentStroke, prevalentHyp, diabetes, heartRate, education]])
+    
     input_scaled = scaler.transform(input_data)
 
     prob = model.predict_proba(input_scaled)[:, 1][0]
